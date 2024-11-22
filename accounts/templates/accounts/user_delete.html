@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main %}
+<table>
+  <tbody>
+    <tr>
+      <th>Nombre de usuario</th>
+      <td>{{ user.nombre_de_usuario }}</td>
+    </tr>
+    <tr>
+      <th>Dirección de correo electrónico</th>
+      <td>{{ user.correo_electronico }}</td>
+    </tr>
+    <tr>
+      <th>Edad</th>
+      <td>{{ user.edad }}</td>
+    </tr>
+  </tbody>
+</table>
+<form action="{% url 'user_delete' user.id %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Eliminar cuenta">
+</form>
+<a href="{% url 'user_detail' user.id %}">Volver</a>
+{% endblock %}
